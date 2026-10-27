@@ -5,12 +5,22 @@ Required:
     - app_role_id
     - principal_object_id
     - resource_object_id
+Optional:
+    - timeouts (block):
+        - create (optional)
+        - delete (optional)
+        - read (optional)
 EOT
 
   type = map(object({
     app_role_id         = string
     principal_object_id = string
     resource_object_id  = string
+    timeouts = optional(object({
+      create = optional(string)
+      delete = optional(string)
+      read   = optional(string)
+    }))
   }))
   validation {
     condition = alltrue([
